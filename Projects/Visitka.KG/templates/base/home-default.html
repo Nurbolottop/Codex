@@ -1,0 +1,969 @@
+{% extends 'include/homepage.html'%}
+{% load static %}
+{% block content %}
+
+
+
+    <!-- ====== start navbar-container ====== -->
+    {% include 'include/header.html'%}
+    <!-- ====== start navbar-container ====== -->
+
+<!--Contents-->
+        <main>
+
+        <!-- ====== start breaking news ====== -->
+        
+        <!-- ====== end breaking news ====== -->
+
+        <!-- ====== start trends news ====== -->
+        <section class="tc-trends-news-style1 pt-50 pb-50 bg-gray1">
+            <div class="container">
+                
+                <div class="section-content">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="tc-stock-card mb-30">
+                                <a href="#" class="stock-card-title">
+                                    Курс валют 
+                                    <span class="la la-arrow-circle-o-right color-666"></span>
+                                </a>
+                                <div class="stock-card-body">
+                                    <div class="stock-card-item">
+                                        <div class="title">
+                                            <h6>Доллар <small class="indicator text-danger"> </small></h6>
+                                             <span class="price">{{dollar}}</span> 
+                                        </div>
+                                    </div>
+                                    <div class="stock-card-item">
+                                        <div class="title">
+                                            <h6>Евро <small class="indicator text-danger"> </small></h6>
+                                             <span class="price">{{euro}}</span> 
+                                        </div>
+                                    </div>
+                                    <div class="stock-card-item">
+                                        <div class="title">
+                                            <h6>Рубль <small class="indicator text-danger"> </small></h6>
+                                             <span class="price">{{rub}}</span> 
+                                        </div>
+                                    </div>
+                                    <div class="stock-card-item">
+                                        <div class="title">
+                                            <h6>Тенге <small class="indicator text-danger"> </small></h6>
+                                        <span class="price">{{tenge}}</span> 
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            {% if big_advert %}
+                            <div class="tc-post-grid-default">
+                                <div class="item">
+                                    <div class="img img-cover th-200">
+                                        <img src="{{big_advert.image.url}}" alt="">
+                                    </div>
+                                    <div class="content py-4 px-3 bg-gray2">
+                                        <p class="color-main fsz-13px text-uppercase mb-1">{{big_advert.title}}</p>
+                                        <h4 class="title ltspc--1"> <a href="{{big_advert.url_booking}}">{{big_advert.sub_title}}</a> </h4>
+                                        <a href="{{big_advert.url_booking}}" class="color-999 fsz-12px mt-20">Перейти<i
+                                                class="la la-external-link-square-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif  %}
+                        </div>
+                        <div class="col-lg-6">
+                            {% if blog%}
+                            <div class="tc-trends-news-slider1 tc-slider-style2">
+                                <div class="swiper-container">
+                                    <div class="swiper-wrapper">
+                                        {% for blog in blog%}
+                                        <div class="swiper-slide">
+                                            <div class="tc-post-overlay-default">
+                                                <div class="img th-650 img-cover">
+                                                    <img src="{{blog.image.url}}" alt="">
+
+                                                </div>
+                                                <div class="content ps-40 pe-40 pb-40">
+                                                    <h2 class="title mb-20">
+                                                        <a href="{% url 'blog_detail' blog.id%}">{{blog.title|truncatewords:8}}</a>
+                                                    </h2>
+                                                    <div class="text mb-40">{{blog.descriptions|truncatewords:5}}
+                                                    </div>
+                                                    <div class="meta-bot lh-1">
+                                                        <ul class="d-flex">
+                                                            <li class="date me-5">
+                                                                <a href="{% url 'blog_detail' blog.id%}"><i class="la la-calendar me-2"></i> {{blog.created_at}}</a>
+                                                            </li>
+                                                            
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <!-- arrows -->
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% if popular_post %}
+                        <div class="col-lg-3">
+                            <div class="tc-post-list-style1">
+                                <div class="tc-post-title-style1">
+                                    <a href="page-blog.html"> Трендовые посты </a>
+                                </div>
+                                {% for popular_post in popular_post%}
+                                <div class="tc-post-overlay-default">
+                                    <div class="img th-200 img-cover">
+                                        <img src="{{popular_post.image.url}}" alt="">
+                                    </div>
+                                    <div class="content ps-20 pe-20 pb-20 text-white">
+                                        <a href="#"
+                                            class="text-uppercase fsz-13px mb-1">{{popular_post.category}}</a>
+                                        <h4 class="title">
+                                            <a href="{% url 'blog_detail' popular_post.id%}">{{popular_post.title}}</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                <div class="items">
+                                    {% for popular in popular_posts%}
+                                    <a href="{% url 'blog_detail' popular.id%}" class="item hover-main">
+                                        <h2 class="num">
+                                            2
+                                        </h2>
+                                        <div class="content">
+                                            <span class="fsz-12px color-999 text-uppercase mb-2">{{popular.category}}</span>
+                                            <h6 class="title">{{popular.title|truncatewords:7}}</h6>
+                                        </div>
+                                    </a>
+                                    {% endfor %}
+                                    <a href="{% url 'blog' %}" class="fsz-13px color-999  pt-30 pb-30">
+                                        Посмотреть больше <i class="la la-angle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ====== end trends news ====== -->
+
+        <!-- ====== start google web stories ====== -->
+        {% if stories %}
+        <section class="tc-google-stories-style1">
+            <div class="container">
+                <div class="section-content pt-70 pb-70 border-0 border-bottom brd-gray">
+                    <p class="color-000 text-uppercase mb-30 ltspc-1">ВЕБ-ИСТОРИИ {{setting.title}}</p>
+                    <div class="tc-google-stories-slider1 tc-slider-style1">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                {% for stories in stories%}
+                                <div class="swiper-slide">
+                                    <a href="{% url 'stories' stories.id%}" class="story-item">
+                                        <div class="img img-cover">
+                                            <img src="{{stories.image.url}}" alt="">
+                                        </div>
+                                        <div class="title fsz-14px color-000 mt-10">
+                                            {{stories.title}}
+                                        </div>
+                                    </a>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <!-- arrows -->
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+        <!-- ====== end google web stories ====== -->
+
+        <!-- ====== start Latest news ====== -->
+        {% if latest_new%}
+        <section class="tc-latest-news-style1">
+            <div class="container">
+                <div class="section-content pt-50 pb-50 border-bottom border-1 brd-gray">
+                    <p class="color-000 text-uppercase mb-30 ltspc-1"> <a href="page-blog.html">   Последние новости </a> <i class="la la-angle-right ms-1"></i>
+                    </p>
+                    <div class="row">
+                        {% for latest_new in latest_new %}
+                        <div class="col-lg-8 border-end brd-gray border-1">
+                            <div class="tc-post-grid-default">
+                                <div class="item">
+                                    <div class="img img-cover th-330">
+                                        <img src="{{latest_new.image.url}} " alt="">
+                                        <a href="https://youtu.be/pGbIOC83-So?t=21" data-lity
+                                            class="video_icon icon-70">
+                                            <i class="ion-play"></i>
+                                        </a>
+                                    </div>
+                                    <div class="content pt-30">
+                                        <a href="page-blog.html"
+                                            class="news-cat color-999 fsz-13px text-uppercase mb-10">{{latest_new.category}}</a>
+                                        <h2 class="title mb-20">
+                                            <a href="{% url 'blog_detail' latest_new.id%}">{{latest_new.title|truncatechars:50}}</a>
+                                        </h2>
+                                       
+                                        <div class="meta-bot lh-1 mt-40">
+                                            <ul class="d-flex">
+                                                <li class="date me-5">
+                                                    <a href="{% url 'blog_detail' latest_new.id%}"><i class="la la-calendar me-2"></i>{{latest_new.created_at}}</a>
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        
+                        <div class="col-lg-4 border-end brd-gray border-1">
+                            <div class="tc-post-list-style2">
+                                <div class="items">
+                                    {% for latest_news in latest_news%}
+                                    <div class="item">
+                                        <div class="row gx-3 align-items-center">
+                                            <div class="col-4">
+                                                <div class="img th-70 img-cover">
+                                                    <img src="{{latest_news.image.url}}" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="content">
+                                                    <div class="news-cat color-999 fsz-13px text-uppercase mb-1">
+                                                        {{latest_news.category}}
+                                                    </div>
+                                                    <h5 class="title ltspc--1">
+                                                        <a href="{% url 'blog_detail' latest_news.id%}"
+                                                            class="hover-underline">{{latest_news.title|truncatechars:50}}</a>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {%endfor%}
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+        <!-- ====== end Latest news ====== -->
+
+        <!-- ====== start banner1 ====== -->
+        {% if  normal_advert %}
+        <section class="banner1">
+            <div class="container">
+                <div class="content pt-50 pb-50 border-bottom border-1 brd-gray">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <a href="{{noraml_advert.url_booking}}" class="d-block img-cover">
+                                <img src="{{normal_advert.image.url}}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+        <!-- ====== end banner1 ====== -->
+
+        <!-- ====== start must read ====== -->
+        <section class="pt-50 pb-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <!-- must-read -->
+                        <section class="tc-must-read-style1 bg-gray2 p-30">
+                            <p class="color-000 text-uppercase mb-20 ltspc-1"> <a href="{% url 'blog' %}">B1.подробнее </a> <i
+                                    class="la la-angle-right ms-1"></i> </p>
+                            {% if first_blog1%}
+                            <div class="tc-post-grid-default border-1 border-bottom brd-gray pb-30">
+                                <div class="item">
+                                    <div class="row">
+                                        {% for blog in first_blog1 %}
+                                            <div class="col-lg-5">
+                                                <div class="img img-cover th-230">
+                                                    <img src="{{blog.image.url}} " alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-7">
+                                                <div class="content">
+                                                    <a href="{% url 'blog_detail' blog.id%}" class="news-cat color-999 fsz-13px text-uppercase mb-10">{{blog.category}}</a>
+                                                    <h3 class="title mb-15"> <a href="{% url 'blog_detail' blog.id%}">{{blog.title|truncatechars:50}}</a> </h3>
+                                                    <div class="meta-bot lh-1 mt-50">
+                                                        <ul class="d-flex">
+                                                            <li class="date me-4">
+                                                                <a href="{% url 'blog_detail' blog.id%}"><i class="la la-calendar me-1"></i> {{blog.created_at}}</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% if first_blog3%}
+                            <div class="tc-post-grid-default pt-30">
+                                <div class="row">
+                                    {% for blog in first_blog3 %}
+                                        <div class="col-lg-4 border-1 border-end brd-gray">
+                                            <div class="item">
+                                                <div class="img img-cover th-180 mb-20">
+                                                    <img src="{{ blog.image.url }}" alt="">
+                                                </div>
+                                                <div class="content">
+                                                    <a href="{% url 'blog_detail' blog.id%}" class="news-cat color-999 fsz-13px text-uppercase mb-1">{{ blog.category }}</a>
+                                                    <h4 class="title ltspc--1">
+                                                        <a href="{% url 'blog_detail' blog.id%}" class="hover-underline">
+                                                            {{ blog.title|truncatechars:50 }}
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endif %}
+                        </section>
+
+                        <!-- business -->
+                        <section class="tc-business-style1 pt-50 pb-50">
+                            <p class="color-000 text-uppercase mb-30 ltspc-1"> <a href="{% url 'blog' %}">B2.подробнее</a> <i
+                                    class="la la-angle-right ms-1"></i> </p>
+                            <div class="main-blog pb-30 border-1 border-bottom brd-gray">
+                                <div class="row">
+                                    {% if second_blog1%}
+                                    {% for blog in second_blog1 %}
+                                        <div class="col-lg-8 border-1 border-end brd-gray">
+                                            <div class="tc-post-overlay-default">
+                                                <div class="img th-400 img-cover">
+                                                    <img src="{{blog.image.url}}" alt="">
+                                                    <div class="tags">
+                                                        <a href="{% url 'blog_detail' blog.id%}">{{ blog.category}}</a>
+                                                    </div>
+                                                </div>
+                                                <div class="content ps-30 pe-30 pb-30">
+                                                    <h3 class="title mb-20">
+                                                        <a href="{% url 'blog_detail' blog.id%}">{{blog.title|truncatechars:50}}</a>
+                                                        </h2>
+                                                        <div class="meta-bot lh-1">
+                                                            <ul class="d-flex">
+                                                                <li class="date me-5">{{ blog.created_at}}</a>
+                                                                </li>
+                                                                
+                                                            </ul>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                    {% if second_blog4%}
+                                    <div class="col-lg-4">
+                                        <div class="tc-post-list-style2">
+                                            <div class="items">
+                                                {% for blog in second_blog4 %}
+                                                    <div class="item pb-20">
+                                                        <div class="content">
+                                                            <a href="{% url 'blog_detail' blog.id%}"
+                                                                class="news-cat color-999 fsz-13px text-uppercase mb-1">{{blog.category}}</a>
+                                                            <h5 class="title ltspc--1">
+                                                                <a href="{% url 'blog_detail' blog.id%}">{{blog.title|truncatechars:50}}</a>
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% if second_blog2%}
+                            <div class="tc-post-list-style2">
+                                <div class="items">
+                                    <div class="row">
+                                        {% for blog in second_blog2 %}
+                                            <div class="col-lg-6">
+                                                <a href="{% url 'blog_detail' blog.id%}" class="item d-block border-0 pt-30">
+                                                    <div class="row gx-3 align-items-center">
+                                                        <div class="col-4">
+                                                            <div class="img th-90 img-cover">
+                                                                <img src="{{blog.image.url}}" alt="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-8">
+                                                            <div class="content">
+                                                                <div
+                                                                    class="news-cat color-999 fsz-13px text-uppercase mb-1">
+                                                                    {{blog.category}}</div>
+                                                                <h5 class="title ltspc--1">{{blog.title|truncatechars:50}}</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </section>
+
+                        <!-- banner2 -->
+                        {% if  normal_advert %}
+                        <section class="banner2">
+                            <div class="container">
+                                <div class="content">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-10">
+                                            <a href="{{normal_advert.url}}" class="d-block img-cover">
+                                                <img src="{{normal_advert.image.url}}" alt="">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        {% endif %}
+
+                        <!-- technology -->
+                        <div class="tc-technology-style1 pt-50">
+                            <p class="color-000 text-uppercase mb-30 ltspc-1"> <a href="{% url 'blog' %}">B3.подробнее</a> <iclass="la la-angle-right ms-1"></i> </p>
+                            {% if third_blog1%}
+                            {% for blog in third_blog1 %}
+                                <div class="tc-post-overlay-default">
+                                    <div class="img th-600 img-cover">
+                                        <img src="{{blog.image.url}}" alt="">
+                                        <div class="tags">
+                                            <a href="{% url 'blog_detail' blog.id%}">{{blog.category}}</a>
+                                        </div>
+                                    </div>
+                                    <div class="content ps-40 pe-40 pb-40">
+                                        <h2 class="title mb-30">
+                                            <a href="{% url 'blog_detail' blog.id%}">{{blog.title|truncatechars:50}} <br> the zappi EV charger</a>
+                                        </h2>
+                                        <div class="meta-bot lh-1">
+                                            <ul class="d-flex">
+                                                <li class="date me-5">
+                                                    <a href="{% url 'blog_detail' blog.id%}"><i class="la la-calendar me-2"></i> {{blog.created_at}}</a>
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            {% endif %}
+                            {% if third_blog2%}
+                            <div class="tc-post-list-style2">
+                                <div class="items">
+                                    {% for blog in third_blog2 %}
+                                        <div class="item pt-30 pb-30 mt-30 border-1 border-top border-bottom brd-gray">
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <div class="img th-200 img-cover">
+                                                        <img src="{{blog.image.url}}" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="content">
+                                                        <div class="news-cat color-999 fsz-13px text-uppercase mb-3">
+                                                            <a href="{% url 'blog_detail' blog.id%}">{{blog.category}}</a>
+                                                        </div>
+                                                        <h3 class="title ltspc--1">
+                                                            <a href="{% url 'blog_detail' blog.id%}"> {{blog.title|truncatechars:50}}</a>
+                                                        </h3>
+                                                        <div class="meta-bot lh-1 mt-80">
+                                                            <ul class="d-flex">
+                                                                <li class="date me-5">
+                                                                    <a href="{% url 'blog_detail' blog.id%}"><i class="la la-calendar me-2"></i>{{blog.created_at}}</a>
+                                                                </li>
+                                                               
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                   {% endfor %}
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="tc-side-widgets">
+                            <!-- widget-social -->
+                            <div class="tc-widget-social-style1">
+                                <p class="color-000 text-uppercase mb-30 ltspc-1 lh-2"> ОСТАВАЙСЯ НА СВЯЗИ </p>
+                                <div class="content">
+                                    {% if setting.facebook %}
+                                    <a href="{{setting.facebook}}" class="social-card">
+                                        <div class="icon facebook-icon">
+                                            <i class="lab la-facebook-f"></i>
+                                        </div>
+                                        <h6>1,5M</h6>
+                                    </a>
+                                    {% endif %}
+                                    {% if setting.instagram %}
+                                    <a href="{{setting.instagram}}" class="social-card">
+                                        <div class="icon insta-icon">
+                                            <i class="lab la-instagram"></i>
+                                        </div>
+                                        {% comment %} <h6>{{followers_count}}</h6> {% endcomment %}
+                                    </a>
+                                    {% endif %}
+                                    {% if setting.youtube %}
+                                     <a href="{{setting.youtube}}" class="social-card">
+                                        <div class="icon twitter-icon">
+                                            <i class="lab la-youtube"></i>
+                                        </div>
+                                        <h6>920K</h6>
+                                    </a> 
+                                    {% endif %}
+                                    {% if setting.whatsapp %}
+                                     <a href="{{setting.whatsapp}}" class="social-card mb-0">
+                                        <div class="icon youtube-icon">
+                                            <i class="lab la-whatsapp"></i>
+                                        </div>
+                                    </a>
+                                    {% endif %}
+                                    
+                                </div>
+                            </div>
+                           {% if big_advert%}
+                            <div class="tc-widget-sponsored-style1">
+                                <div class="img img-cover">
+                                    <img src="{{big_advert.image.url}}" alt="">
+                                </div>
+                                <div class="info pt-10">
+                                    <div class="spon-cat"> {{big_advert.title|truncatechars:50}} </div>
+                                    
+                                    <a href="{{big_advert.url_booking}}">
+                                        <small>Перейти<i
+                                                class="las la-external-link-square-alt ms-2"></i></small>
+                                    </a>
+                                </div>
+                            </div>
+                            {% endif  %}
+                            <!-- popular posts -->
+                            {% if popular_post%}
+                            <div class="tc-widget-popular-style1">
+                                <p class="color-000 text-uppercase mb-20 ltspc-1"> Популярные посты </p>
+                                {% for popular_post in popular_post%}
+                                <div class="main-card">
+                                    <div class="img th-300 img-cover">
+                                        <img src="{{popular_post.image.url}}" alt="">
+                                        <div class="tags">
+                                            <a href="{% url 'blog_detail' popular_post.id%}">{{popular_post.category}}</a>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <h4 class="title">
+                                            <a href="{% url 'blog_detail' popular_post.id%}">{{popular_post.title|truncatechars:50}}</a>
+                                        </h4>
+                                        <div class="meta-bot">
+                                            <ul class="d-flex">
+                                                <li class="date me-4">
+                                                    <a href="{% url 'blog_detail' popular_post.id%}"><i class="la la-calendar me-1"></i>{{popular_post.created_at}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                <div class="tc-widget-popular-list">
+                                    {% for popular in popular_posts %}
+                                    <a href="{% url 'blog_detail' popular.id%}" class="item">
+                                        <div class="img img-cover">
+                                            <img src="{{popular.image.url}}" alt="">
+                                        </div>
+                                        <div class="info">
+                                            <h6 class="title">
+                                                {{popular.title|truncatechars:50}}
+                                            </h6>
+                                        </div>
+                                    </a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endif %}
+                            <!-- widget-adbox -->
+                            {% if small_advert%}
+                            <div class="tc-widget-adbox-style1">
+                                <a href="{{small_advert.url_booking}}" class="img">
+                                    <img src="{{small_advert.image.url}} " alt="" class="">
+                                </a>
+                            </div>
+                            {% endif %}
+                            <!-- widget-survey -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== end must read ====== -->
+
+        <!-- ====== start hot videos ====== -->
+        <!-- ====== end hot vedios ====== -->
+
+        <!-- ====== start lifestyle ====== -->
+        {% if four_blog1 %}
+        <section class="tc-lifestyle pt-50 pb-50">
+            <div class="container">
+                <p class="color-000 text-uppercase mb-30 ltspc-1"> <a href="{% url 'blog' %}">B4.подробнее</a> <i class="la la-angle-right ms-1"></i> </p>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-lg-9 border-end brd-gray border-1">
+                            {% for blog in four_blog1%}
+                            <div class="tc-post-grid-default">
+                                <div class="item">
+                                    <div class="img img-cover th-400">
+                                        <img src="{{blog.image.url}}" alt="">
+                                    </div>
+                                    <div class="content pt-30">
+                                        <a href="{% url 'blog_detail' blog.id%}" class="news-cat color-999 fsz-13px text-uppercase mb-10">{{blog.category}}</a>
+                                        <h3 class="title ltspc--1 mb-20"> <a href="{% url 'blog_detail' blog.id%}">
+                                                {{blog.title|truncatechars:50}}
+                                            </a> </h3>
+                                        <div class="meta-bot lh-1 mt-40">
+                                            <ul class="d-flex">
+                                                <li class="date me-5">
+                                                    <a href="{% url 'blog_detail' blog.id%}"><i class="la la-calendar me-2"></i> {{blog.created_at}}</a>
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor%}
+                        </div>
+                        <div class="col-lg-3 border-end brd-gray border-1">
+                            <div class="tc-post-list-style2">
+                                <div class="items">
+                                    {% for blog in four_blog2%}
+                                    <a href="{% url 'blog_detail' blog.id%}"
+                                        class="item d-block border-1 border-top border-bottom-0 brd-gray pt-15 mt-15">
+                                        <div class="row gx-3 align-items-center">
+                                            <div class="col-4">
+                                                <div class="img th-50 img-cover">
+                                                    <img src="{{blog.image.url}} " alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="content">
+                                                    <h6 class="title ltspc--1">
+                                                        {{blog.title|truncatechars:50}}
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+        <!-- ====== end lifestyle ====== -->
+
+        <!-- ====== start columnist ====== -->
+        {% if team%}
+        <section class="tc-columnist-style1">
+            <div class="container">
+                <div class="content pt-50 pb-50 border-1 border-top brd-gray">
+                    <p class="color-000 text-uppercase mb-40 ltspc-1 lh-1">Наша комманда <i
+                            class="la la-angle-right ms-1"></i> </p>
+                    <div class="columnist-slider1 tc-slider-style1">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                {% for team in team %}
+                                <div class="swiper-slide">
+                                    <div class="columnist-card d-flex align-items-center">
+                                        <div
+                                            class="img img-cover icon-100 rounded-circle overflow-hidden flex-lg-shrink-0 me-4">
+                                            <img src="{{team.image.url}}" alt="">
+                                        </div>
+                                        <div class="info">
+                                            <h6 class="name fsz-20px mb-10">
+                                                {{team.name}}
+                                            </h6>
+                                            <div class="jop-title">
+                                                <p class="fsz-13px text-uppercase">{{team.work}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <!-- arrows -->
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+        <!-- ====== end columnist ====== -->
+
+        <!-- ====== start another-news ====== -->
+        {% if fiveone_blog1%}
+        <section class="another-news pt-50 pb-50 border-1 border-top brd-gray">
+            <div class="container">
+                <div class="content">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            
+                                <div class="col-12 border-1 border-end brd-gray">
+                                    {% for blog in fiveone_blog1 %}
+                                    <p class="color-000 text-uppercase mb-30 ltspc-1"> <a href="{% url 'blog' %}">B5.{{blog.category}}</a> <i
+                                        class="la la-angle-right ms-1"></i> </p>
+                                <div class="row">
+                                    <div class="tc-post-grid-default">
+                                        <div class="item">
+                                            <div class="img img-cover th-250">
+                                                <img src="{{blog.image.url}}" alt="">
+                                            </div>
+                                            <div class="content pt-20">
+                                                <a href="{% url 'blog_detail' blog.id%}"
+                                                    class="news-cat color-999 fsz-13px text-uppercase mb-10">{{blog.category}}</a>
+                                                <h4 class="title ltspc--1 mb-10">
+                                                    <a href="{% url 'blog_detail' blog.id%}">
+                                                        {{blog.title|truncatechars:50}}
+                                                    </a>
+                                                </h4>
+                                                <div class="meta-bot lh-1 mt-20">
+                                                    <ul class="d-flex">
+                                                        <li class="date me-5">
+                                                            <a href="{% url 'blog_detail' blog.id%}"><i class="la la-calendar me-2"></i> {{blog.created_at}}</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                    <div class="tc-post-list-style2">
+                                        <div class="items">
+                                            {% for blog in fiveone_blog2%}
+                                            <a href="{% url 'blog_detail' blog.id%}"
+                                                class="item d-block border-1 border-top border-bottom-0 brd-gray pt-15 mt-15 brd-gray">
+                                                <div class="row gx-3 align-items-center">
+                                                    
+                                                    <div class="col-8">
+                                                        <div class="content">
+                                                            <small
+                                                                class="news-cat color-999 fsz-13px text-uppercase mb-10">{{blog.category}}</small>
+                                                            <h5 class="title ltspc--1">
+                                                                {{blog.title|truncatechars:50}}
+                                                            </h5>
+                                                            <small
+                                                                class="news-cat color-999 fsz-13px text-uppercase mb-10">{{blog.created_at}}</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                           
+                            <div class="row">
+                                <div class="col-12 border-1 border-end brd-gray">
+                                    {% for blog in fivetwo_blog1 %}
+                                    <p class="color-000 text-uppercase mb-30 ltspc-1"> <a href="{% url 'blog' %}">B6.{{blog.category}}</a> <i
+                                        class="la la-angle-right ms-1"></i> </p>
+                                    <div class="tc-post-grid-default">
+                                        <div class="item">
+                                            <div class="img img-cover th-250">
+                                                <img src="{{blog.image.url}}" alt="">
+                                            </div>
+                                            <div class="content pt-20">
+                                                <a href="{% url 'blog_detail' blog.id%}"
+                                                    class="news-cat color-999 fsz-13px text-uppercase mb-10">{{blog.category}}</a>
+                                                <h4 class="title ltspc--1 mb-10">
+                                                    <a href="{% url 'blog_detail' blog.id%}">
+                                                        {{blog.title|truncatechars:50}}
+                                                    </a>
+                                                </h4>
+                                         
+                                                <div class="meta-bot lh-1 mt-20">
+                                                    <ul class="d-flex">
+                                                        <li class="date me-5">
+                                                            <a href="{% url 'blog_detail' blog.id%}"><i class="la la-calendar me-2"></i> {{blog.created_at}}</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    <div class="tc-post-list-style2">
+                                        <div class="items">
+                                            {% for blog in fivetwo_blog2%}
+                                            <a href="{% url 'blog_detail' blog.id%}"
+                                                class="item d-block border-1 border-top border-bottom-0 brd-gray pt-15 mt-15 brd-gray">
+                                                <div class="row gx-3 align-items-center">
+                                                    
+                                                    <div class="col-8">
+                                                        <div class="content">
+                                                            <small
+                                                                class="news-cat color-999 fsz-13px text-uppercase mb-10">{{blog.category}}</small>
+                                                            <h5 class="title ltspc--1">
+                                                                {{blog.title|truncatechars:50}}
+                                                            </h5>
+                                                            <small
+                                                                class="news-cat color-999 fsz-13px text-uppercase mb-10">{{blog.created_at}}</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            
+                            <div class="row">
+                                <div class="col-12">
+                                    {% for blog in fivethree_blog1 %}
+                                    <p class="color-000 text-uppercase mb-30 ltspc-1"> <a href="page-blog.html">B7.{{blog.category}}</a> <i
+                                        class="la la-angle-right ms-1"></i> </p>
+                                    <div class="tc-post-grid-default">
+                                        <div class="item">
+                                            <div class="img img-cover th-250">
+                                                <img src="{{blog.image.url}}" alt="">
+                                            </div>
+                                            <div class="content pt-20">
+                                                <a href="{% url 'blog_detail' blog.id%}"
+                                                    class="news-cat color-999 fsz-13px text-uppercase mb-10">{{blog.category}}</a>
+                                                <h4 class="title ltspc--1 mb-10">
+                                                    <a href="{% url 'blog_detail' blog.id%}">
+                                                       {{blog.title|truncatechars:50}}
+                                                    </a>
+                                                </h4>
+                                                <div class="meta-bot lh-1 mt-20">
+                                                    <ul class="d-flex">
+                                                        <li class="date me-5">
+                                                            <a href="{% url 'blog_detail' blog.id%}"><i class="la la-calendar me-2"></i> {{blog.created_at}}</a>
+                                                        </li>
+                                                            
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    <div class="tc-post-list-style2">
+                                        <div class="items">
+                                            {% for blog in fivethree_blog2 %}
+                                            <a href="{% url 'blog_detail' blog.id%}"
+                                                class="item d-block border-1 border-top border-bottom-0 brd-gray pt-15 mt-15 brd-gray">
+                                                <div class="row gx-3 align-items-center">
+                                                    
+                                                    <div class="col-8">
+                                                        <div class="content">
+                                                            <small
+                                                                class="news-cat color-999 fsz-13px text-uppercase mb-10">{{blog.category}}</small>
+                                                            <h5 class="title ltspc--1">
+                                                                {{blog.title|truncatechars:50}}
+                                                            </h5>
+                                                            <small
+                                                                class="news-cat color-999 fsz-13px text-uppercase mb-10">{{blog.created_at}}</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+        <!-- ====== end another-news ====== -->
+
+        <!-- ====== start download ====== -->
+        <section class="tc-download-style1 pb-50">
+            <div class="container">
+                <div class="content">
+                    <div class="row align-items-center">
+                        <div class="col-lg-4">
+                            <div class="info">
+                                <strong class="title">Download Newzin App</strong>
+                                <div class="text">
+                                    Easy to update latest news, daily podcast and everything in your hand
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="img">
+                                <a href="#">
+                                    <img src="{% static 'assets/img/apple1.png' %} " alt="">
+                                </a>
+                                <a href="#">
+                                    <img src="{% static 'assets/img/android1.png' %} " alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ====== end download ====== -->
+
+        <!-- ====== start modals ====== -->
+
+        <!-- ====== end modals ====== -->
+
+    </main>
+    <!--End-Contents-->
+
+{% include 'include/footer.html' %}
+    <!-- ====== end footer ====== -->
+
+    <!-- ====== start to top button ====== -->
+    <!-- <div class="progress-wrap">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102"><path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 220.587;"></path></svg>
+    </div> -->
+    <!-- ====== end to top button ====== -->
+
+{% endblock%}

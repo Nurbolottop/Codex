@@ -1,0 +1,96 @@
+
+{%extends 'homepage.html'%}
+{%load static%}
+{%block content%}
+    <!-- Preloader -->
+    
+    <!-- Slider -->
+    {% include 'include/header.html' %}
+    <!-- Header Banner -->
+    <div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="4" data-background="{% static 'img/merrigarden/banner/1.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-left caption mt-90">
+                    <h5>{{setting.title}}</h5>
+                    <h1>Новости</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Rooms -->
+    <section class="rooms1 section-padding bg-cream" data-scroll-index="1">
+        <div class="container">
+            <div class="row">
+                {% for news in news%}
+                <div class="col-md-4">
+                    <div class="item br-20">
+                        <div class="position-re o-hidden"><img src="{{news.image.url}}" alt="Merri Garden"></div>
+                        <div class="con">
+                            <h5><a href="{% url 'news_detail' news.id %}">{{news.title}}</a> </h5>
+                            <div class="line"></div>
+                            <div class="row facilities">
+                                <div class="col col-md-5 text-end">
+                                    <div class="permalink">
+                                        <a href="{% url 'news_detail' news.id %}">
+                                            Подробнее<i class="ti-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <!-- Pagination -->
+                    <ul class="news-pagination-wrap align-center mb-30 mt-30">
+                        <li><a href="news.html#"><i class="ti-angle-left"></i></a></li>
+                        <li><a href="news.html#">1</a></li>
+                        <li><a href="news.html#" class="active">2</a></li>
+                        <li><a href="news.html#">3</a></li>
+                        <li><a href="news.html#"><i class="ti-angle-right"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Reservation & Booking Form -->
+    {% include 'include/reserv.html' %}
+    <!-- Clients -->
+    <section class="clients">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="owl-carousel owl-theme">
+                        <div class="clients-logo">
+
+                            <a href="#0"><img src="{% static 'img/clients/1.png' %}" alt="Merri Garden"></a>
+                        </div>
+                        <div class="clients-logo">
+                            <a href="#0"><img src="{% static 'img/clients/2.png' %}" alt="Merri Garden"></a>
+                        </div>
+                        <div class="clients-logo">
+                            <a href="#0"><img src="{% static 'img/clients/3.png' %}" alt="Merri Garden"></a>
+                        </div>
+                        <div class="clients-logo">
+                            <a href="#0"><img src="{% static 'img/clients/4.png' %}" alt="Merri Garden"></a>
+                        </div>
+                        <div class="clients-logo">
+                            <a href="#0"><img src="{% static 'img/clients/5.png' %}" alt="Merri Garden"></a>
+                        </div>
+                        <div class="clients-logo">
+                            <a href="#0"><img src="{% static 'img/clients/6.png' %}" alt="Merri Garden"></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    {% include 'include/footer.html' %}
+{% endblock %}

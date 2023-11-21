@@ -1,0 +1,114 @@
+{%extends 'homepage.html'%}
+{%load static%}
+{%block content%}
+    <!-- Preloader -->
+    
+    <!-- Slider -->
+    {% include 'include/header.html' %}
+    <div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="3"
+        data-background="{% static 'img/merrigarden/banner/1.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-left caption mt-90">
+                    <h5>{{setting.title}}</h5>
+                    <h1>Наши Контакты</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact -->
+    <section class="contact section-padding">
+        <div class="container">
+            <div class="row mb-90">
+                <div class="col-md-6 mb-60">
+                    <h3>{{setting.title}}</h3>
+                    <p>{{setting.descriptions_contacts}}</p>
+                    <div class="reservations mb-30">
+                        <div class="icon"><span class="flaticon-call"></span></div>
+                        <div class="text">
+                            <p>Забронировать</p> <a href="tel:{{setting.phone}}">{{setting.phone}}</a>
+                        </div>
+                    </div>
+                    <div class="reservations mb-30">
+                        <div class="icon"><span class="flaticon-envelope"></span></div>
+                        <div class="text">
+                            <p>Email</p> <a href="mailto:{{setting.email}}">{{setting.email}}</a>
+                        </div>
+                    </div>
+                    <div class="reservations">
+                        <div class="icon"><span class="flaticon-location-pin"></span></div>
+                        <div class="text">
+                            <p>Адрес</p> Адрес
+                            <br>{{setting.location}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 mb-30 offset-md-1">
+                    <h3>Свяжитесь с нами</h3>
+                    {% comment %} <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-success contact__msg" style="display: none" role="alert"> Your
+                                message was sent successfully. </div>
+                        </div>
+                    </div> {% endcomment %}
+                    <form method = "POST" class="form1 clearfix">
+                        {%csrf_token%}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="input1_wrapper">
+                                <label>Имя</label>
+                                <div class="input1_inner">
+                                    <input type="text" name = "name" class="form-control baseinput"
+                                        placeholder="ФИО">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="input1_wrapper">
+                                <label>Почта</label>
+                                <div class="input1_inner">
+                                    <input type="text" name = "email" class="form-control baseinput"
+                                        placeholder="Почта">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="input1_wrapper">
+                                <label>Почта</label>
+                                <div class="input1_inner">
+                                    <input type="text" name = "phone" class="form-control baseinput"
+                                        placeholder="Телефонный номер">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="input1_wrapper">
+                                <label>Сообщение</label>
+                                <div class="input1_inner">
+                                    <textarea type="text" name = "message" class="form-control input datepicker"
+                                    placeholder="Сообщение"   ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <button type="submit" class="btn-form1-submit mt-15">Забронировать</button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+            <!-- Map Section -->
+            <div class="row">
+                <div class="col-md-12 map animate-box" data-animate-effect="fadeInUp">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d182.48457449919078!2d72.82173580062053!3d40.514867938115266!2m3!1f297.1874999999997!2f49.6491546040172!3f0!3m2!1i1024!2i768!4f35!3m3!1m2!1s0x38bdaf989d82681d%3A0x3f6e349d0a46e1be!2z0JzQtdGA0YDQuCDQk9Cw0YDQtNC10L0g0J7RiA!5e1!3m2!1sru!2skg!4v1694352738396!5m2!1sru!2skg" width="1130" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Reservation & Booking Form -->
+    {% include 'include/reserv.html' %}
+    <!-- Footer -->
+    {% include 'include/footer.html' %}
+   
+{% endblock %}

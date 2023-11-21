@@ -1,0 +1,93 @@
+{% extends 'include/homepage.html' %}
+{% load static %}
+{% block content %}
+        <!-- sidebar-information-area-start -->
+        
+        <!-- sidebar-information-area-end -->
+
+        <!-- header area start -->
+        {% include 'include/header.html' %}
+        <!-- header area end -->
+
+        <main>
+            <!-- breadcrumb area start -->
+            <section class="breadcrumb-area bg-default" data-background="{% static 'assets/img/breadcrumb/breadcrumb-bg.jpg' %}">
+                <img src="{% static 'assets/img/breadcrumb/shape-1.png' %}" alt="" class="breadcrumb-shape">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="breadcrumb-content">
+                                <h2 class="breadcrumb-title">Галерея </h2>
+                                <div class="breadcrumb-list">
+                                    <a href="{% url 'index' %}">Главная страница</a>
+                                    <span>Галерея</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- breadcrumb area end -->
+
+            <!-- gallery area start -->
+            <section class="innerPage_gallery-area pt-110 pb-90">
+                <div class="container">
+                    <div class="row align-items-end">
+                        <div class="col-xl-5 col-lg-6">
+                            <div class="section-area-2">
+                                <h2 class="section-title mb-50">Просмотрите наш
+                                    <br> эксклюзив  <span>Галерея <img src="{% static 'assets/img/banner/2/line.png' %}" alt=""></span>
+                                </h2>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="innerPage_gallery-wrap">
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                                <div class="row">
+                                    {% for gallery in gallery %}
+                                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                                        <div class="innerPage_gallery-item mb-30">
+                                            <div class="innerPage_gallery-img">
+                                                <img src="{{gallery.image.url}}" alt="">
+                                            </div>
+                                            <div class="innerPage_gallery-content">
+                                                <a href="{{gallery.image.url}}" class="popup-image"><i class="fa-thin fa-plus"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- gallery area end -->
+
+            <!-- cta area start -->
+            <div class="cta-area">
+                <div class="container">
+                    <div class="cta-wrapper">
+                        <div class="row align-items-center">
+                            <div class="col-xl-6 col-lg-6">
+                                <div class="cta-content mb-30 mb-lg-0">
+                                    <span class="cta-subtitle">Мотивацию надо подняяяять</span>
+                                    <h2 class="cta-title">Люблю работать, создавать, кодировать,разрабатывать </h2>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- cta area end -->
+        </main>
+
+        <!-- footer area start -->
+        {% include 'include/footer.html' %}
+        <!-- footer area end -->
+
+{% endblock %}

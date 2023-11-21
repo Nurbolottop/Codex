@@ -1,0 +1,466 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <!-- Metas -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="HTML5 Template Iteck Multi-Purpose themeforest" />
+    <meta name="description" content="Iteck - Multi-Purpose HTML5 Template" />
+    <meta name="author" content="" />
+
+    <!-- Title  -->
+    <title>{{setting.title}}</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/img/v.png' %}" title="Favicon" sizes="16x16" />
+
+    <!-- bootstrap 5 -->
+    <link rel="stylesheet" href="{% static 'assets/css/lib/bootstrap.min.css' %}">
+
+    <!-- font family -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- ionicons icons  -->
+    <link rel="stylesheet" href="{% static 'assets/css/lib/ionicons.css' %}">
+    <!-- line-awesome icons  -->
+    <link rel="stylesheet" href="{% static 'assets/css/lib/line-awesome.css' %}">
+    <!-- animate css  -->
+    <link rel="stylesheet" href="{% static 'assets/css/lib/animate.css' %}" />
+    <!-- fancybox popup  -->
+    <link rel="stylesheet" href="{% static 'assets/css/lib/jquery.fancybox.css' %}" />
+    <!-- lity popup  -->
+    <link rel="stylesheet" href="{% static 'assets/css/lib/lity.css' %}" />
+    <!-- swiper slider  -->
+    <link rel="stylesheet" href="{% static 'assets/css/lib/swiper.min.css' %}" />
+
+    <!-- ====== main style ====== -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+    <title> {{setting.title}} </title>
+</head>
+
+<body class="home-style1 tc-about-page">
+
+    <!-- ====== start loading page ====== -->
+    <div id="preloader">
+    </div>
+    <!-- ====== end loading page ====== -->
+
+    <!-- ====== start navbar-container ====== -->
+{% include 'include/header.html' %}
+    <!-- ====== start navbar-container ====== -->
+
+    <!--Contents-->
+    <main>
+
+        <!-- ====== start about header ====== -->
+        <section class="tc-about-header">
+            <div class="container">
+                <div class="content">
+                    <div class="title">
+                        <h2> О нас </h2>
+                    </div>
+                    <div class="links">
+                        <a href="{% url 'index' %}"> Главная страница </a>
+                        <span class="icon"> <i class="la la-angle-right"></i> </span>
+                        <a href="{% url 'about' %}"> О нас </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ====== end about header ====== -->
+
+{% if about %}
+        <!-- ====== start about-about ====== -->
+        <section class="tc-about-about">
+            <div class="container">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-lg-6">
+                        <div class="img img-cover">
+                            <img src="{{about.image.url}}" alt="">templates/detail/page-single-post-creative.html
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="info mt-4 mt-lg-0">
+                            <p class="fsz-13px color-999 text-uppercase mb-10"> c  {{about.date}} </p>
+                            <h2 class="fsz-30px mb-40"> {{about.title}} </h2>
+                            <div class="text fsz-14px color-666 mb-60">
+                                {{about.descriptions}}
+                            </div>
+                            
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ====== end about-about ====== -->
+{% endif %}
+
+        <!-- ====== start about-vision ====== -->
+        {% comment %} <section class="tc-about-vision">
+            <div class="container">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-lg-5">
+                        <div class="info mt-4 mt-lg-0">
+                            <p class="fsz-13px color-999 text-uppercase mb-10"> mission & vision </p>
+                            <h2 class="fsz-30px mb-40"> Newzin generated 2x more <br> online sales in 2022. </h2>
+                            <div class="text fsz-14px color-666 mb-20">
+                                Say goodbye to old fashioned theme options! Hub employs a live customizer so you can adjust global theme options and see design changes in real-time thank to the next generation customizer.
+                            </div>
+                            <div class="text fsz-14px color-666 mb-40">
+                                Average. Urban design draws together the many strands of place making, environmental. Years of experience.
+                            </div>
+                            <div class="btns">
+                                <a href="https://youtu.be/pGbIOC83-So?t=21" data-lity="" class="vid_link">
+                                    <i class="la la-play"></i>
+                                </a>
+                                <span class="fsz-14px fw-bold"> How We Works Here </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="numbers-circles">
+                            <div class="circle-item">
+                                <div class="cont">
+                                    <p> mission & vision </p>
+                                    <strong class="number"> <span class="counter"> 77 </span>%</strong>
+                                </div>
+                            </div>
+                            <div class="circle-item">
+                                <div class="cont">
+                                    <p> Crafted by </p>
+                                    <strong class="number"> <span class="counter"> 49 </span>%</strong>
+                                </div>
+                            </div>
+                            <div class="circle-item">
+                                <div class="cont">
+                                    <p> crafted by </p>
+                                    <strong class="number"> <span class="counter"> 10 </span>k</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img src="https://newzin-html.themescamp.com/assets/img/about_page/pattern_1.png' %}" alt="" class="pattern">
+        </section> {% endcomment %}
+        <!-- ====== end about-vision ====== -->
+
+{% if team%}
+        <!-- ====== start about-team ====== -->
+        <section class="tc-about-team">
+            <div class="container">
+                <div class="title text-center mb-30">
+                    <h2 class="fsz-30px"> Наша команда </h2>
+                </div>
+                <div class="contant">
+                    <div class="row">
+                        {% for team in team %}
+                        <div class="col-lg-4">
+                            <div class="team-card">
+                                <div class="img img-cover">
+                                    <img src="{{team.image.url}}" alt="">
+                                </div>
+                                <div class="inf">
+                                    <h6> {{team.name}} </h6>
+                                    <small> Специалист по </small>
+                                    <a href="page-about.html#" class="tags"> {{team.work}} </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ====== end about-team ====== -->
+{% endif %}
+
+        <!-- ====== start about-history ====== -->
+        {% if history%}
+        <section class="tc-about-history">
+            <div class="container">
+                <div class="title mb-80">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <p class="fsz-13px text-white text-uppercase mb-10"> Наша история </p>
+                            <h2 class="fsz-30px text-white"> Путешествие сквозь время с {{setting.title}} </h2>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="arrows justify-content-lg-end">
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-button-next"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="tc-about-history-slider">
+                        <div class="swiper-container overflow-visible">
+                            <div class="swiper-wrapper">
+                                {% for history in history%}
+                                <div class="swiper-slide">
+                                    <div class="history-card">
+                                        <div class="card-title mb-30">
+                                            <p class="fsz-13px color-main"> {{history.year}} </p>
+                                            <h5 class="fsz-22px fw-bold"> {{history.title}} </h5>
+                                        </div>
+                                        <div class="text fsz-14px color-666 mb-50">
+                                            {{history.descriptions}}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+        <!-- ====== end about-history ====== -->
+
+
+        <!-- ====== start about-team ====== -->
+        {% comment %} <section class="tc-about-blog">
+            <div class="container">
+                <div class="title text-center mb-30">
+                    <p class="fsz-13px color-999 text-uppercase mb-10"> insights </p>
+                    <h2 class="fsz-30px"> Company Blog & Insights </h2>
+                </div>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="tc-post-grid-default mt-50">
+                                <div class="item">
+                                    <div class="img img-cover th-250">
+                                        <img src="{% static 'assets/img/another_news/1.png' %}" alt="">
+                                    </div>
+                                    <div class="content pt-20">
+                                        <a href="page-about.html#" class="news-cat color-999 fsz-13px text-uppercase mb-10">sport</a>
+                                        <h4 class="title ltspc--1 mb-10">
+                                            <a href="page-about.html#">
+                                                America's track and field team won the 2022 olympics?
+                                            </a>
+                                        </h4>
+                                        <div class="text color-666">
+                                            Crime rates on trains and buses are up in some of the nation’s
+                                            biggest [...]
+                                        </div>
+                                        <div class="meta-bot lh-1 mt-20">
+                                            <ul class="d-flex">
+                                                <li class="date me-5">
+                                                    <a href="page-about.html#"><i class="la la-calendar me-2"></i> Dec 14,
+                                                        2022</a>
+                                                </li>
+                                                <li class="comment">
+                                                    <a href="page-about.html#"><i class="la la-comment me-2"></i> 7</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="tc-post-grid-default mt-50">
+                                <div class="item">
+                                    <div class="img img-cover th-250">
+                                        <img src="{% static 'assets/img/another_news/4.png' %}" alt="">
+                                    </div>
+                                    <div class="content pt-20">
+                                        <a href="page-about.html#" class="news-cat color-999 fsz-13px text-uppercase mb-10">Entertaiment</a>
+                                        <h4 class="title ltspc--1 mb-10">
+                                            <a href="page-about.html#">
+                                                Logan Cee's Best Contemporary Art Works
+                                            </a>
+                                        </h4>
+                                        <div class="text color-666">
+                                            Crime rates on trains and buses are up in some of the nation’s
+                                            biggest [...]
+                                        </div>
+                                        <div class="meta-bot lh-1 mt-20">
+                                            <ul class="d-flex">
+                                                <li class="date me-5">
+                                                    <a href="page-about.html#"><i class="la la-calendar me-2"></i> Dec 14,
+                                                        2022</a>
+                                                </li>
+                                                <li class="comment">
+                                                    <a href="page-about.html#"><i class="la la-comment me-2"></i> 7</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="tc-post-grid-default mt-50">
+                                <div class="item">
+                                    <div class="img img-cover th-250">
+                                        <img src="{% static 'assets/img/another_news/7.png' %}" alt="">
+                                    </div>
+                                    <div class="content pt-20">
+                                        <a href="page-about.html#" class="news-cat color-999 fsz-13px text-uppercase mb-10">Travel</a>
+                                        <h4 class="title ltspc--1 mb-10">
+                                            <a href="page-about.html#">
+                                                Top 10 Most beautiful hot springs in the world
+                                            </a>
+                                        </h4>
+                                        <div class="text color-666">
+                                            Crime rates on trains and buses are up in some of the nation’s
+                                            biggest [...]
+                                        </div>
+                                        <div class="meta-bot lh-1 mt-20">
+                                            <ul class="d-flex">
+                                                <li class="date me-5">
+                                                    <a href="page-about.html#"><i class="la la-calendar me-2"></i> Dec 14,
+                                                        2022</a>
+                                                </li>
+                                                <li class="comment">
+                                                    <a href="page-about.html#"><i class="la la-comment me-2"></i> 7</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> {% endcomment %}
+        <!-- ====== end about-team ====== -->
+
+
+        <!-- ====== start modals ====== -->
+
+        <div class="offcanvas offcanvas-start sidebar-popup-style1" tabindex="-1" id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <div class="logo">
+                    <img src="{% static 'assets/img/logo_home1.png' %}" alt="" class="dark-none">
+                    <img src="{% static 'assets/img/logo_home1_lt.png' %}" alt="" class="light-none">
+                </div>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body mt-4">
+                <h6 class="color-000 text-uppercase mb-10 ltspc-1"> about us <i class="la la-angle-right ms-1"></i> </h6>
+                <div class="text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem optio tempora quia iure quae. Soluta corporis quidem aperiam amet nihil.
+                </div>
+
+                <div class="sidebar-categories mt-40">
+                    <h6 class="color-000 text-uppercase mb-30 ltspc-1"> categories <i class="la la-angle-right ms-1"></i> </h6>
+                    <a href="page-about.html#" class="cat-card">
+                        <div class="img img-cover">
+                            <img src="{% static 'assets/img/bussines/1.png' %}" alt="">
+                        </div>
+                        <div class="info">
+                            <h5>bussines</h5>
+                            <span class="num">12</span>
+                        </div>
+                    </a>
+                    <a href="page-about.html#" class="cat-card">
+                        <div class="img img-cover">
+                            <img src="{% static 'assets/img/trend/3.png' %}" alt="">
+                        </div>
+                        <div class="info">
+                            <h5>technology</h5>
+                            <span class="num">14</span>
+                        </div>
+                    </a>
+                    <a href="page-about.html#" class="cat-card">
+                        <div class="img img-cover">
+                            <img src="{% static 'assets/img/must_read/3.png' %}" alt="">
+                        </div>
+                        <div class="info">
+                            <h5>culture</h5>
+                            <span class="num">20</span>
+                        </div>
+                    </a>
+                    <a href="page-about.html#" class="cat-card">
+                        <div class="img img-cover">
+                            <img src="{% static 'assets/img/videos/1.png' %}" alt="">
+                        </div>
+                        <div class="info">
+                            <h5>videos</h5>
+                            <span class="num">14</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="sidebar-contact-info mt-50">
+                    <h6 class="color-000 text-uppercase mb-20 ltspc-1"> Contact & follow <i class="la la-angle-right ms-1"></i> </h6>
+                    <ul class="m-0">
+                        <li class="mb-3">
+                            <i class="las la-map-marker me-2 color-main fs-5"></i>
+                            <a href="page-about.html#">streat name 12, hollywood City, USA</a>
+                        </li>
+                        <li class="mb-3">
+                            <i class="las la-envelope me-2 color-main fs-5"></i>
+                            <a href="page-about.html#">Newzin@gmail.com</a>
+                        </li>
+                        <li class="mb-3">
+                            <i class="las la-phone-volume me-2 color-main fs-5"></i>
+                            <a href="page-about.html#">+12 123 456 789</a>
+                        </li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="page-about.html#">
+                            <i class="la la-twitter"></i>
+                        </a>
+                        <a href="page-about.html#">
+                            <i class="la la-facebook-f"></i>
+                        </a>
+                        <a href="page-about.html#">
+                            <i class="la la-instagram"></i>
+                        </a>
+                        <a href="page-about.html#">
+                            <i class="la la-youtube"></i>
+                        </a>
+                        <a href="page-about.html#">
+                            <i class="la la-spotify"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ====== end modals ====== -->
+
+    </main>
+    <!--End-Contents-->
+
+    <!-- ====== start footer ====== -->
+    {% include 'include/footer.html' %}
+    <!-- ====== end footer ====== -->
+
+    <!-- ====== start to top button ====== -->
+    <!-- <div class="progress-wrap">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102"><path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 220.587;"></path></svg>
+    </div> -->
+    <!-- ====== end to top button ====== -->
+
+    <!-- ====== request ====== -->
+    <script src="{% static 'assets/js/lib/jquery-3.0.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/lib/jquery-migrate-3.0.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/lib/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/lib/wow.min.js' %}"></script>
+    <script src="{% static 'assets/js/lib/jquery.fancybox.js' %}"></script>
+    <script src="{% static 'assets/js/lib/lity.js' %}"></script>
+    <script src="{% static 'assets/js/lib/swiper.min.js' %}"></script>
+    <script src="{% static 'assets/js/lib/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/lib/jquery.counterup.js' %}"></script>
+    <script src="https://newzin-html.themescamp.com/assets/js/lib/pace.js' %}"></script>
+    <script src="{% static 'assets/js/lib/back-to-top.js' %}"></script>
+    <script src="{% static 'assets/js/lib/parallaxie.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+
+</body>
+
+</html>

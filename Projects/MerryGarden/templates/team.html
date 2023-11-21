@@ -1,0 +1,96 @@
+{%extends 'homepage.html'%}
+{%load static%}
+{%block content%}
+    <!-- Preloader -->
+    
+    <!-- Slider -->
+    {% include 'include/header.html' %}
+    <!-- Header Banner -->
+    <div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="4" data-background="{% static 'img/merrigarden/banner/1.jpg'%}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 caption mt-90">
+                    <h5>{{setting.title}}</h5>
+                    <h1>Команда</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="section-padding-boss">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-subtitle"><span>{{setting.title}}</span></div>
+                    <div class="section-title">Основатель</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-md-6 animate-box" data-animate-effect="fadeInUp">
+                    <img src="{{founder.image.url}}" alt="Merri Garden" class="br-20">
+                </div>
+                <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
+                    <div class="section-subtitle">{{founder.found}}</div>
+                    <div class="section-title">{{founder.name}}</div>
+                    <p>{{founder.descriptions}}</p>
+                    {%if founder.descriptions_one%}
+                    <p>{{founder.descriptions_one}}</p>
+                    {%endif%}
+                    {% if founder.descriptions_three%}
+                    <p>{{founder.descriptions_two}}</p>
+                    {%endif%}
+                    {% if founder.descriptions_three%}
+                    <p>{{founder.descriptions_three}}</p>
+                    {%endif%}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team section-padding bg-cream">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-subtitle"><span>{{setting.title}}</span></div>
+                    <div class="section-title">Команда</div>
+                </div>
+            </div>
+            <div class="row">
+                {% for team in team%}
+                <div class="col-md-4">
+                    <div class="item">
+                        <div class="img"> <img src="{{team.image.url}}" alt="Merri Garden"> </div>
+                        <div class="info">
+                            <h6>{{team.title}}</h6>
+                            <p>{{team.descriptions}}</p>
+                            <div class="social valign">
+                                <div class="full-width"> 
+                                    {% if team.instagram%}
+                                   <a href="{{team.instagram}}"><i class="ti-instagram"></i></a> 
+                                   {% endif %}
+                                   {% if team.whatsapp%}
+                                   <a href="{{team.whatsapp}}"><i class="ti-whatsapp"></i></a> 
+                                   {% endif %}
+                                   {% if team.facebook%}
+                                   <a href="{{team.facebook}}"><i class="ti-facebook"></i></a> 
+                                   {% endif %}
+                                   {% if team.youtube%}
+                                   <a href="{{team.youtube}}"><i class="ti-youtube"></i></a>
+                                   {% endif %}
+                                   <p>{{team.email}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation & Booking Form -->
+     {% include 'include/reserv.html' %}
+    <!-- Footer -->
+{% include 'include/footer.html' %}
+
+{% endblock %}

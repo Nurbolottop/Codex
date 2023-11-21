@@ -1,0 +1,110 @@
+{%extends 'homepage.html'%}
+{%load static%}
+{%block content%}
+    <!-- Preloader -->
+    
+    <!-- Slider -->
+    {% include 'include/header.html' %}
+    <!-- Header Banner -->
+    <div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="4" data-background="{% static 'img/merrigarden/banner/1.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 caption mt-90">
+                    <h5>{{setting.title}}</h5>
+                    <h1>О нас</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="about section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
+                    <div class="section-subtitle">{{setting.title}}</div>
+                    <div class="section-title">{{about.title}}</div>
+                    <p>{{about.descriptions}}</p>
+                    <!-- call -->
+                    <div class="reservations">
+                        <div class="icon"><span class="flaticon-call"></span></div>
+                        <div class="text">
+                            <p>Забронировать</p> <a href="tel:{{setting.phone}}">{{setting.phone}}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-md-3 animate-box" data-animate-effect="fadeInUp">
+                    <img src="{{about.image_1.url}}" alt="Merri Garden" class="mt-90 mb-30 br-20">
+                </div>
+                <div class="col col-md-3 animate-box" data-animate-effect="fadeInUp">
+                    <img src="{{about.image_2.url}}" alt="Merri Garden" class="br-20">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Rooms -->
+    
+
+    <section class="facilties pt-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-subtitle">{{setting.title}}</div>
+                    <div class="section-title">Услуги</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            {% for service in services%}
+            <div class="row">
+                <div class="col-md-6 p-0 animate-box" data-animate-effect="fadeInLeft">
+                    <div class="img left brl-20">
+                        <a href="#testimonials"><img src="{{service.image.url}}" alt="Merri Garden"></a>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 bg-cream valign animate-box brr-20" data-animate-effect="fadeInRight">
+                    <div class="content">
+                        <div class="cont text-left">
+                            <h4>{{service.title}}</h4>
+                            <p>{{service.descriptions}}</p>
+                            <div class="butn-dark br-20"> <a href="#testimonials"><span>Заказать услугу</span></a> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor%}
+        </div>
+    </section>
+    <!-- News -->
+    <section class="news section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-subtitle"><span>{{setting.title}}</span></div>
+                    <div class="section-title">Команда</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="owl-carousel owl-theme">
+                        {% for team in team%}
+                        <div class="item br-20">
+                            <div class="position-re o-hidden br-20"> 
+                                <img class="br-20" src="{{team.image.url}}" alt="Merri Garden">
+                            </div>
+                            <div class="con br-20">
+                                <h5><a href="#">{{team.title}}</a></h5>
+                            </div>
+                        </div>
+                        {% endfor%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Reservation & Booking Form -->
+    {% include 'include/reserv.html' %}
+    <!-- Footer -->
+    {% include 'include/footer.html' %}
+{% endblock%}
